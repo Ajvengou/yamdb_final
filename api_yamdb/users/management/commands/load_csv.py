@@ -3,22 +3,22 @@ import os
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from users.models import User
+from reviews.models import Comment, Review
 from titles.models import Genre, Title, Category
-from reviews.models import Review, Comment
+from users.models import User
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        CGR = '\033[92m'
-        CYELL = '\033[93m'
-        CEND = '\033[0m'
+        cgr = '\033[92m'
+        cyel = '\033[93m'
+        cend = '\033[0m'
 
         data_dir = os.path.join(settings.BASE_DIR, 'static/data/')
         print('=============== Loading csv files do database ===============')
         with open(data_dir + 'users.csv', encoding="utf-8-sig") as csvfile:
             reader = csv.DictReader(csvfile)
-            print('Loading' + CYELL + ' users.csv ' + CEND + 'file')
+            print('Loading' + cyel + ' users.csv ' + cend + 'file')
             for row in reader:
                 record = User(
                     id=row['id'],
@@ -31,7 +31,7 @@ class Command(BaseCommand):
                 )
                 record.save()
 
-        print('Loading' + CYELL + ' categoty.csv ' + CEND + 'file')
+        print('Loading' + cyel + ' categoty.csv ' + cend + 'file')
         with open(data_dir + 'category.csv', encoding="utf-8-sig") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -42,7 +42,7 @@ class Command(BaseCommand):
                 )
                 record.save()
 
-        print('Loading' + CYELL + ' genre.csv ' + CEND + 'file')
+        print('Loading' + cyel + ' genre.csv ' + cend + 'file')
         with open(data_dir + 'genre.csv', encoding="utf-8-sig") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -53,7 +53,7 @@ class Command(BaseCommand):
                 )
                 record.save()
 
-        print('Loading' + CYELL + ' titles.csv ' + CEND + 'file')
+        print('Loading' + cyel + ' titles.csv ' + cend + 'file')
         with open(data_dir + 'titles.csv', encoding="utf-8-sig") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -65,7 +65,7 @@ class Command(BaseCommand):
                 )
                 record.save()
 
-        print('Loading' + CYELL + ' genre_title.csv ' + CEND + 'file')
+        print('Loading' + cyel + ' genre_title.csv ' + cend + 'file')
         with open(data_dir + 'genre_title.csv',
                   encoding="utf-8-sig") as csvfile:
             reader = csv.DictReader(csvfile)
@@ -75,7 +75,7 @@ class Command(BaseCommand):
                 title.genre.set([genre])
                 title.save()
 
-        print('Loading' + CYELL + ' review.csv ' + CEND + 'file')
+        print('Loading' + cyel + ' review.csv ' + cend + 'file')
         with open(data_dir + 'review.csv', encoding="utf-8-sig") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -88,7 +88,7 @@ class Command(BaseCommand):
                 )
                 record.save()
 
-        print('Loading' + CYELL + ' comments.csv ' + CEND + 'file')
+        print('Loading' + cyel + ' comments.csv ' + cend + 'file')
         with open(data_dir + 'comments.csv', encoding="utf-8-sig") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -101,4 +101,4 @@ class Command(BaseCommand):
                 )
                 record.save()
 
-        print('===== Files loading' + CGR + ' complete.' + CEND + '=====')
+        print('===== Files loading' + cgr + ' complete.' + cend + '=====')
