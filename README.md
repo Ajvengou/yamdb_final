@@ -29,7 +29,10 @@ a68243a0a5e2   postgres:12.4             "docker-entrypoint.s…"   7 minutes ag
 
 `python manage.py migrate`
 `python manage.py collectstatic`
+
 При желании можно загрузить тестовую бд с контентом
+
+`python manage.py loaddata fixtures.json`
 
 Как пользоваться
 После запуска проекта, подробную инструкцию можно будет посмотреть по адресу http://0.0.0.0/redoc/
