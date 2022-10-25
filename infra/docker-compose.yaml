@@ -6,10 +6,6 @@ services:
     container_name: yamdb-postgres
     volumes:
       - db_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     env_file:
       - ./.env
     restart: always
