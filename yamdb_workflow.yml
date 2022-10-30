@@ -1,7 +1,7 @@
 name: Django-app workflow
 
 on: [push]
-# 1
+
 env:
   PROJECT_FOLDER: api_yamdb
 
@@ -23,6 +23,8 @@ jobs:
     - name: Test with flake8 and django tests
       run: |
         python -m flake8
+        # включить pytest
+        # pytest
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest

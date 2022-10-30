@@ -17,4 +17,4 @@ COPY --chown=${USER}:${USER} . .
 USER ${USER}
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", "10.72.6.1:8000", "api_yamdb.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "api_yamdb.wsgi:application"]
